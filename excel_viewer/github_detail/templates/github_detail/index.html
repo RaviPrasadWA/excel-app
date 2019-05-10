@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load js_format %}
+
+{% load static %}
+
+{% block title %}Github Detail{% endblock %}
+
+{% block css_style %}
+<link href="{% static 'jsoneditor/dist/jsoneditor.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div id="jsoneditor" style="height: 80vh;"></div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    var data = {{github_data | js_format}};
+    var container = document.getElementById("jsoneditor");
+    var options = {};
+    var editor = new JSONEditor(container, options);
+
+    editor.set(data);
+
+    // get json
+    var json = editor.get();
+
+</script>
+{% endblock %}

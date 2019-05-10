@@ -70,6 +70,9 @@ TEMPLATES = [
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
             ],
+            'builtins': [
+                'github_detail.templatetags.js_format',
+            ],
         },
     },
 ]
@@ -144,6 +147,8 @@ LOGIN_REDIRECT_URL = 'home'
 SOCIAL_AUTH_GITHUB_KEY = '00fd7d52af30b12383d9'
 
 SOCIAL_AUTH_GITHUB_SECRET = 'c606b10843a19cbaa51fc6cf6e1193e1c0e113da'
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/github_detail/detail/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

@@ -1,15 +1,19 @@
 import requests
 from django.shortcuts import redirect
 
-
-def save_profile(backend, user, response, *args, **kwargs):
+def save_profile(backend, user, request, response, *args, **kwargs):
 
     def get_data(key, fetch_url=True):
         if fetch_url:
             resp = requests.get(response.get(key))
+            if resp.status_code == 200:
+                resp = resp.json()
+            else:
+                resp = None
         else:
             resp = response.get(key)
         return resp
+
 
     repos_links = get_data("repos_url")
     followers = get_data("followers_url")
@@ -26,7 +30,4 @@ def save_profile(backend, user, response, *args, **kwargs):
                    "public_repos_count": public_repos_count,
                    "followers_count": followers_count,
                    "email": email}
-    print(github_data)
-
-    return redirect("github_detail",
-                    data=github_data)
+    request.session['github_data'] = github_data

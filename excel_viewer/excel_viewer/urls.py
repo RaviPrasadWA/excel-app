@@ -23,7 +23,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^viewer/', include('viewer.urls', namespace='viewer')),
-    url(r'^github/', include('github_detail.urls', namespace='github_detail')),
+    url(r'^github_detail/', include('github_detail.urls', namespace='github_detail')),
     url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]
 

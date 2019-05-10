@@ -3,6 +3,9 @@ from django.shortcuts import render
 
 class GithubDetail(View):
 
-    def post(self, request, *args, **kwargs):
-        print(dir(request))
-        return 1
+    def get(self, request, *args, **kwargs):
+        github_data = request.session.pop("github_data")
+        return render(self.request,
+                      'github_detail/index.html',
+                      {'github_data': github_data}
+                      )

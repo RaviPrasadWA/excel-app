@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'pyexcel',
     'viewer',
     'social_django',
+    'github_detail',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
-    'viewer.pipeline.save_profile',  # <--- set the path to the function
+    'github_detail.pipeline.save_profile',  # <--- set the path to the function
 )
 
 # Password validation

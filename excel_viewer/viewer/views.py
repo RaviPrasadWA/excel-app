@@ -49,10 +49,3 @@ class DetailView(View):
                           , display_length=10)
         wait_until_file_is_generated("generated/{path}".format(path=generated_file))
         return render_to_response(generated_file)
-
-class GithubDetail(View):
-
-    def post(self, request, *args, **kwargs):
-        print(dir(request))
-        return 1
-

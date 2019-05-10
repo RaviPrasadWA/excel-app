@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'pyexcel',
     'viewer',
     'social_django',
+    'github_detail',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',
                 'social_django.context_processors.login_redirect',
+            ],
+            'builtins': [
+                'github_detail.templatetags.js_format',
             ],
         },
     },
@@ -100,7 +104,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
-    'viewer.pipeline.save_profile',  # <--- set the path to the function
+    'github_detail.pipeline.save_profile',  # <--- set the path to the function
 )
 
 # Password validation
@@ -143,6 +147,8 @@ LOGIN_REDIRECT_URL = 'home'
 SOCIAL_AUTH_GITHUB_KEY = '00fd7d52af30b12383d9'
 
 SOCIAL_AUTH_GITHUB_SECRET = 'c606b10843a19cbaa51fc6cf6e1193e1c0e113da'
+
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/github_detail/detail/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

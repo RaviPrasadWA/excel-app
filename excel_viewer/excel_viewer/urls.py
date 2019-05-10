@@ -23,6 +23,7 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^viewer/', include('viewer.urls', namespace='viewer')),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
 ]
 
 if settings.DEBUG:
